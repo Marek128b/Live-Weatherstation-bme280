@@ -18,6 +18,7 @@ const int ledPin2 = 4;
 
 float temperature = 0;
 float humidity = 0;
+float air_pressure = 0;
 
 unsigned long previousMillis = 0;
 long interval = 5000;
@@ -80,6 +81,7 @@ void loop() {
     
     humidity = bme.readHumidity();
     temperature = bme.readTemperature();
+    air_pressure = bme.readPressure();
     notifyClients(); //sends the json data via websockets to the webseite
   }
 }
@@ -185,6 +187,8 @@ void notifyClients() {
          json +=  temperature;
          json +=  ", \"HUMIDITY\":";
          json +=  humidity;
+         json +=  ", \"PRESSURE\":";
+         json +=  air_pressure;
          json +=  "}";
   ws.textAll(json);
 }

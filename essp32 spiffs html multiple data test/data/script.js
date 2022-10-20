@@ -28,6 +28,7 @@ function onMessage(event) {
   LED2_STATE = data.LED2;
   var Temperature = data.TEMPERATURE;
   var Humidity = data.HUMIDITY;
+  var Pressure = data.PRESSURE;
   
   document.getElementById('state').innerHTML = LED1_STATE;
   document.getElementById('state2').innerHTML = LED2_STATE;
@@ -37,6 +38,9 @@ function onMessage(event) {
     
   document.getElementById('hum_meter').value = Humidity;
   document.getElementById('hum_val').innerHTML = Humidity;
+
+  document.getElementById('pres_meter').value = Pressure;
+  document.getElementById('pres_val').innerHTML = Pressure;
 }
 function onLoad(event) {
   initWebSocket();
